@@ -5,17 +5,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WebNotes.Entity;
 using WebNotes.Models;
+using WebNotes.Service;
 
 namespace WebNotes.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly NoteService _noteService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, NoteService noteService)
         {
             _logger = logger;
+            _noteService = noteService;
         }
 
         public IActionResult Index()
@@ -40,7 +44,12 @@ namespace WebNotes.Controllers
         public IActionResult AddNote(NoteModel model)
         {
             var nameOfNote = model.Name;
-
+            var note = _noteService.AddNote(new Note
+            {
+                Name = model.Name,
+                Language = "Russki",
+                Text = "Ahuennay zametka"
+            });
             return nameOfNote == null ? BadRequest("Name cannot be 'NULL'") : Note(model);
         }
 
