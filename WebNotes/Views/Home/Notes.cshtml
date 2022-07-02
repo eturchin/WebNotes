@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Notes";
+}
+@model NoteModel
+<h1 align="center">@ViewData["Title"]</h1>
+
+
+<body>
+<form method="post" asp-controller="Home" asp-action="AddNote">
+
+    
+    <div>
+        <a>Name of note</a>
+        <input name="Name" type="text">
+        <button type="submit">Add note</button>
+
+    </div>
+</form>
+<form method="post" asp-controller="Home" asp-action="NoteData">
+<section class="text">
+    @{
+        if (Model is {Name: { } })
+        {
+            <a href="/Home/NoteData">@Model.Name </a>
+        }
+    }
+</section>
+</form>
+</body>

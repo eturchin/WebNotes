@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Information";
+}
+
+<style type="text/css">
+    .comment {
+        width: 500px; 
+        height: 250px;
+        margin-left: auto; 
+        margin-right: auto;
+        background: linear-gradient(#FFECD2, #FDB8A1) no-repeat;
+    }
+
+    .comment textarea {
+        border: 4px double black;
+        background: transparent;
+        width: 500px;
+        height: 250px;
+        resize: none;
+        outline: none;
+        padding: 10px;
+        scrollbar-gutter: auto;
+    }
+
+    p {
+        padding: 10px;
+    }
+
+    button.new {
+        background: -moz-linear-gradient(#FFECD2, #FDB8A1);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFECD2), to(#FDB8A1));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFECD2', endColorstr='#FDB8A1');
+        padding: 3px 20px;
+        color: #333;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #666;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: linear-gradient(#FFECD2, #FDB8A1) no-repeat; 
+    }
+ 
+    ::-webkit-scrollbar-thumb {
+        background: #888; 
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+</style>
+
+<h2 align="center">@ViewData["Title"]</h2>
+<h3 align="center">"Name of note"</h3>
+<body>
+<form action="">
+    <div class="comment"><textarea maxlength="1000" cols="10" rows="10"></textarea></div>
+    <p align="center" ><button class="new" src="E:\Portfolio\WebNotes\inputText.jpg">Save note</button></p>
+</form>
+</body>
