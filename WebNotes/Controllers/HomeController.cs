@@ -32,7 +32,7 @@ namespace WebNotes.Controllers
             return View();
         }
         public IActionResult NoteData(NoteModel model)
-        {
+        { 
             return View("NoteData", model);
         }
         public IActionResult Note(NoteModel model)
@@ -41,7 +41,7 @@ namespace WebNotes.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNote(NoteModel model)
+        public IActionResult AddNote(NoteModel model) 
         {
             var nameOfNote = model.Name;
             var note = _noteService.AddNote(new Note
