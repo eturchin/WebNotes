@@ -12,7 +12,7 @@ namespace WebNotes.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly NoteService _noteService;
 
-        public HomeController(ILogger<HomeController> logger, NoteService noteService)
+        public HomeController(ILogger<HomeController> logger, NoteService noteService) 
         {
             _logger = logger;
             _noteService = noteService;
