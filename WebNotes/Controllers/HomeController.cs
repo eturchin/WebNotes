@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using WebNotes.Entity;
 using WebNotes.Models;
 using WebNotes.Service;
@@ -47,9 +43,17 @@ namespace WebNotes.Controllers
             var note = _noteService.AddNote(new Note
             {
                 Name = model.Name,
-                Text = "Ahuennay zametka"
+                Text="Hello World!"
             });
+            model.Id = note.Id;
             return nameOfNote == null ? BadRequest("Name cannot be 'NULL'") : Note(model);
+        }
+      
+        [HttpPost]
+        public IActionResult GetNote(NoteModel model)
+        {
+            _noteService.GetNote(model.Id);
+            return NoteData(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

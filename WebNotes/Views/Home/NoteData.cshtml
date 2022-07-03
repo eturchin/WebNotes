@@ -2,6 +2,8 @@
     ViewData["Title"] = "Information";
 }
 
+@model NoteModel
+
 <style type="text/css">
     .comment {
         width: 500px; 
@@ -19,7 +21,6 @@
         resize: none;
         outline: none;
         padding: 10px;
-        scrollbar-gutter: auto;
     }
 
     p {
@@ -29,7 +30,6 @@
     button.new {
         background: -moz-linear-gradient(#FFECD2, #FDB8A1);
         background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFECD2), to(#FDB8A1));
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFECD2', endColorstr='#FDB8A1');
         padding: 3px 20px;
         color: #333;
         -moz-border-radius: 5px;
@@ -58,8 +58,8 @@
 <h2 align="center">@ViewData["Title"]</h2>
 <h3 align="center">"Name of note"</h3>
 <body>
-<form action="">
-    <div class="comment"><textarea maxlength="1000" cols="10" rows="10"></textarea></div>
-    <p align="center" ><button class="new" src="E:\Portfolio\WebNotes\inputText.jpg">Save note</button></p>
+<form method="post" asp-controller="Home" asp-action="GetNote">
+    <div class="comment"><textarea maxlength="1000" cols="10" rows="10">@Model.Text</textarea></div>
+    <p align="center"><button class="new">Save note</button></p>
 </form>
 </body>

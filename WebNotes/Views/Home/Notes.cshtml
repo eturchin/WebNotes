@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Notes";
 }
+@using WebNotes.DbContext
+@using WebNotes.Migrations
 @model NoteModel
 <h1 align="center">@ViewData["Title"]</h1>
 
@@ -11,19 +13,19 @@
     
     <div>
         <a>Name of note</a>
-        <input name="Name" type="text">
+        <input maxlength="100" name="Name" type="text">
         <button type="submit">Add note</button>
 
     </div>
 </form>
 <form method="post" asp-controller="Home" asp-action="NoteData">
-<section class="text">
-    @{
-        if (Model is {Name: { } })
-        {
-            <a href="/Home/NoteData">@Model.Name </a>
+    <section class="text">
+        @{
+            if (Model is {Name: { } })
+            {
+                <a href="/Home/NoteData">@Model.Name</a>
+            }
         }
-    }
-</section>
+    </section>
 </form>
 </body>

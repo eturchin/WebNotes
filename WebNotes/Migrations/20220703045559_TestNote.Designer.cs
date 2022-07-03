@@ -28,7 +28,7 @@ namespace WebNotes.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(MAX)");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");

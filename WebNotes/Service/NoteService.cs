@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WebNotes.DbContext;
 using WebNotes.Entity;
@@ -13,7 +14,7 @@ namespace WebNotes.Service
         {
             _dbContext = dbContext;
         }
-
+        
         public List<Note> GetAllNotes()
         {
             return _dbContext.Notes.ToList();
@@ -23,6 +24,17 @@ namespace WebNotes.Service
             var addedNote = _dbContext.Notes.Add(note);
             _dbContext.SaveChanges();
             return addedNote.Entity;
+        }
+        public Note AddTextToNote(Note note)
+        {
+            var addedNote = _dbContext.Notes.Add(note);
+            _dbContext.SaveChanges();
+            return addedNote.Entity;
+        }
+
+        public Note GetNote(Guid id)
+        {
+            return _dbContext.Notes.Find(id);
         }
     }
 }
