@@ -47,7 +47,6 @@ namespace WebNotes.Controllers
             var note = _noteService.AddNote(new Note
             {
                 Name = model.Name,
-                Language = "Russki",
                 Text = "Ahuennay zametka"
             });
             return nameOfNote == null ? BadRequest("Name cannot be 'NULL'") : Note(model);

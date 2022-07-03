@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebNotes.Migrations
 {
-    public partial class AddNotes : Migration
+    public partial class TestNote : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

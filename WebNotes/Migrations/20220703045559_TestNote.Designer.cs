@@ -10,8 +10,8 @@ using WebNotes.DbContext;
 namespace WebNotes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220702193852_AddLanguage")]
-    partial class AddLanguage
+    [Migration("20220703045559_TestNote")]
+    partial class TestNote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,6 @@ namespace WebNotes.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Language")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
