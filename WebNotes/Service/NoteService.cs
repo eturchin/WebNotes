@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WebNotes.DbContext;
 using WebNotes.Entity;
 
 namespace WebNotes.Service
 {
-    public class NoteService
+    public class NoteService : INoteService
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -30,6 +31,15 @@ namespace WebNotes.Service
             var addedNote = _dbContext.Notes.Add(note);
             _dbContext.SaveChanges();
             return addedNote.Entity;
+        }
+
+        public async Task<Note> UpdateNote(Note note)
+        {
+            var updatedNote = _dbContext.Update(note);
+
+            await _dbContext.SaveChangesAsync();
+
+            return updatedNote.Entity;
         }
 
         public Note GetNote(Guid id)

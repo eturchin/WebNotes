@@ -8,14 +8,12 @@
 
 
 <body>
-<form method="post" asp-controller="Home" asp-action="AddNote">
 
-    
+<form method="post" asp-controller="Note" asp-action="AddNote">
     <div>
         <a>Name of note</a>
         <input maxlength="100" name="Name" type="text">
         <button type="submit">Add note</button>
-
     </div>
 </form>
 <section class="text">
@@ -24,7 +22,7 @@
             {
                 foreach (var note in Model)
                 {
-                    <a href="\Home\NoteData\@note.Id">@note.Name</a>
+                    <a asp-route-id="@note.Id" asp-controller="Note" asp-action="GetNote">@note.Name</a>
                 }
             }
         }

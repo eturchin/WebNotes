@@ -23,7 +23,7 @@ namespace WebNotes
         {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=testnotes;Trusted_Connection=True;"));
-            services.AddTransient<NoteService>();
+            services.AddTransient<INoteService, NoteService>();
 
         }
 

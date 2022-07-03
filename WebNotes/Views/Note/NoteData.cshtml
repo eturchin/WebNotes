@@ -58,8 +58,8 @@
 <h2 align="center">@ViewData["Title"]</h2>
 <h3 align="center">"Name of note"</h3>
 <body>
-<form method="post" asp-controller="Home" asp-action="GetNote">
-    <div class="comment"><textarea maxlength="1000" cols="10" rows="10">@Model.Text</textarea></div>
+<form method="post" asp-controller="Note" asp-action="UpdateNote">
+    <div class="comment"><textarea maxlength="1000" cols="10" rows="10">@Model.Id</textarea></div>
     <p align="center"><button class="new">Save note</button></p>
 </form>
 </body>
