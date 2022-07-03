@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using WebNotes.Entity;
@@ -25,19 +26,27 @@ namespace WebNotes.Controllers
 
         public IActionResult Notes()
         {
-            return View();
+            var notes = _noteService.GetAllNotes();
+            return View("Notes",notes);
         }
-        public IActionResult NoteData(NoteModel model)
+        public IActionResult NoteData(Note model)
         { 
             return View("NoteData", model);
         }
-        public IActionResult Note(NoteModel model)
+        public IActionResult Note(Note model)
         {
             return View("Notes", model);
         }
 
+        [HttpGet]
+        public IActionResult GetNote([FromQuery] Guid id)
+        {
+            var note = _noteService.GetNote(id);
+            return View("NoteData", note);
+        }
+
         [HttpPost]
-        public IActionResult AddNote(NoteModel model) 
+        public IActionResult AddNote(Note model) 
         {
             var nameOfNote = model.Name;
             var note = _noteService.AddNote(new Note
@@ -46,14 +55,17 @@ namespace WebNotes.Controllers
                 Text="Hello World!"
             });
             model.Id = note.Id;
-            return nameOfNote == null ? BadRequest("Name cannot be 'NULL'") : Note(model);
+            return nameOfNote == null ? BadRequest("Name cannot be 'NULL'") : RedirectToAction("NoteData");
         }
       
         [HttpPost]
-        public IActionResult GetNote(NoteModel model)
+        public IActionResult GetNote(Note model)
         {
-            _noteService.GetNote(model.Id);
-            return NoteData(model);
+            var note = _noteService.GetNote(model.Id);
+            model.Name = note.Name;
+            model.Id = note.Id;
+            model.Text = note.Text;
+            return View("NoteData");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

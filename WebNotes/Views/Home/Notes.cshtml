@@ -1,9 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Notes";
 }
-@using WebNotes.DbContext
-@using WebNotes.Migrations
-@model NoteModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<WebNotes.Entity.Note>
+
 <h1 align="center">@ViewData["Title"]</h1>
 
 
@@ -18,14 +18,15 @@
 
     </div>
 </form>
-<form method="post" asp-controller="Home" asp-action="NoteData">
-    <section class="text">
+<section class="text">
         @{
-            if (Model is {Name: { } })
+            if (Model != null)
             {
-                <a href="/Home/NoteData">@Model.Name</a>
+                foreach (var note in Model)
+                {
+                    <a href="\Home\NoteData\@note.Id">@note.Name</a>
+                }
             }
         }
     </section>
-</form>
 </body>

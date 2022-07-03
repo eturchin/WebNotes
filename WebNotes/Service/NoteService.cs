@@ -34,6 +34,7 @@ namespace WebNotes.Service
 
         public Note GetNote(Guid id)
         {
+
             return _dbContext.Notes.Find(id);
         }
     }
