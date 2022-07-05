@@ -8,15 +8,15 @@
 
 
 <body>
-
-<form method="post" asp-controller="Note" asp-action="AddNote">
-    <div>
-        <a>Name of note</a>
-        <input maxlength="100" name="Name" type="text">
-        <button type="submit">Add note</button>
-    </div>
-</form>
-<section>
+<div align="center">
+    <form method="post" asp-controller="Note" asp-action="AddNote">
+        <div>
+            <a>Name of note</a>
+            <input maxlength="100" name="Name" type="text">
+            <button type="submit">Add note</button>
+        </div>
+    </form>
+    <section>
         @{
             if (Model != null)
             {
@@ -30,5 +30,6 @@
                 }
             }
         }
-</section>
+    </section>
+</div>
 </body>

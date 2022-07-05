@@ -6,66 +6,64 @@
 
 <style type="text/css">
     .comment {
-        width: 500px; 
-        height: 250px;
-        margin-left: auto; 
-        margin-right: auto;
         background: linear-gradient(#FFECD2, #FDB8A1) no-repeat;
+        height: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
     }
 
     .comment textarea {
-        border: 4px double black;
         background: transparent;
-        width: 500px;
+        border: 4px double black;
         height: 250px;
-        resize: none;
         outline: none;
         padding: 10px;
+        resize: none;
+        width: 500px;
     }
 
-    p {
-        padding: 10px;
-    }
+    p { padding: 10px; }
 
     button.new {
-        background: -moz-linear-gradient(#FFECD2, #FDB8A1);
-        background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFECD2), to(#FDB8A1));
-        padding: 3px 20px;
-        color: #333;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
-        border-radius: 5px;
+        background: -moz-linear-gradient(#FFECD2, #FDB8A1);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFECD2), to(#FDB8A1));
         border: 1px solid #666;
+        border-radius: 5px;
+        color: #333;
+        padding: 3px 20px;
     }
 
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
+    ::-webkit-scrollbar { width: 10px; }
 
-    ::-webkit-scrollbar-track {
-        background: linear-gradient(#FFECD2, #FDB8A1) no-repeat; 
-    }
- 
-    ::-webkit-scrollbar-thumb {
-        background: #888; 
-    }
+    ::-webkit-scrollbar-track { background: linear-gradient(#FFECD2, #FDB8A1) no-repeat; }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555; 
-    } 
+    ::-webkit-scrollbar-thumb { background: #888; }
+
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+    .container-buttons {
+        display: flex;
+        justify-content: space-around;
+    }
 </style>
 
 <h2 align="center">@ViewData["Title"]</h2>
-<h3 align="center">@Model.Name</h3>
+<h4 align="center">Note "@Model.Name"</h4>
 <body>
 <form method="post" asp-route-id="@Model.Id"asp-controller="Note" asp-action="UpdateNote">
-    <div class="comment"><textarea maxlength="1000" name="Text">@Model.Text</textarea></div>
-    <p align="center"><button class="new" name="Name" type="submit">Save note</button></p>
+    <div class="comment">
+        <textarea class="comment" maxlength="1000" name="Text">@Model.Text</textarea>
+    </div>
+    <p align="center">
+        <button class="new" name="Name" type="submit">Save note</button>
+    </p>
 </form>
-<a class="nav-link text-dark" asp-route-id="@Model.Id" asp-controller="Note" asp-action="RemoveNote">
-    
-</a>
-<form method="post" asp-route-id="@Model.Id" asp-controller="Note" asp-action="RemoveNote">
-    <button class="new">Remove note</button>
+<form method="post" asp-route-id="@Model.Id"asp-controller="Note" asp-action="RemoveNote">
+    <p align="center">
+        <button class="new">Remove note</button>
+    </p>
 </form>
 </body>
