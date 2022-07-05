@@ -1,5 +1,3 @@
-using System;
-
 namespace WebNotes.Models
 {
     public class ErrorViewModel

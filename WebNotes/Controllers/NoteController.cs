@@ -33,7 +33,7 @@ namespace WebNotes.Controllers
         [HttpPost]
         public IActionResult AddNote(Note note)
         {
-            var addedNote = _noteService.AddNote(note);
+            _noteService.AddNote(note);
             return RedirectToAction("Index");
         }
 
