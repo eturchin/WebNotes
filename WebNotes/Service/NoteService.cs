@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebNotes.DbContext;
 using WebNotes.Entity;
 
@@ -15,22 +17,24 @@ namespace WebNotes.Service
         {
             _dbContext = dbContext;
         }
-        
+
         public List<Note> GetAllNotes()
         {
             return _dbContext.Notes.ToList();
         }
+
         public Note AddNote(Note note)
         {
             var addedNote = _dbContext.Notes.Add(note);
             _dbContext.SaveChanges();
             return addedNote.Entity;
         }
-        public Note AddTextToNote(Note note)
-        {
-            throw new NotImplementedException();
-        }
 
+        public void RemoveNote(Note note)
+        {
+            _dbContext.Remove(note); 
+            _dbContext.SaveChanges();
+        }
         public async Task<Note> UpdateNote(Note note)
         {
             var updatedNote = _dbContext.Update(note);

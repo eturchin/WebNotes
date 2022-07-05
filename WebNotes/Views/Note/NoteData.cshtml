@@ -62,4 +62,10 @@
     <div class="comment"><textarea maxlength="1000" name="Text">@Model.Text</textarea></div>
     <p align="center"><button class="new" name="Name" type="submit">Save note</button></p>
 </form>
+<a class="nav-link text-dark" asp-route-id="@Model.Id" asp-controller="Note" asp-action="RemoveNote">
+    
+</a>
+<form method="post" asp-route-id="@Model.Id" asp-controller="Note" asp-action="RemoveNote">
+    <button class="new">Remove note</button>
+</form>
 </body>

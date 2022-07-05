@@ -45,5 +45,12 @@ namespace WebNotes.Controllers
             await _noteService.UpdateNote(updatedNote);
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult RemoveNote(Note note)
+        {
+            var removedNote = _noteService.GetNote(note.Id);
+            _noteService.RemoveNote(removedNote); 
+            return RedirectToAction("Index");
+        }
     }
 }
