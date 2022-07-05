@@ -56,10 +56,10 @@
 </style>
 
 <h2 align="center">@ViewData["Title"]</h2>
-<h3 align="center">"Name of note"</h3>
+<h3 align="center">@Model.Name</h3>
 <body>
-<form method="post" asp-controller="Note" asp-action="UpdateNote">
-    <div class="comment"><textarea maxlength="1000" cols="10" rows="10">@Model.Text</textarea></div>
-    <p align="center"><button class="new">Save note</button></p>
+<form method="post" asp-route-id="@Model.Id"asp-controller="Note" asp-action="UpdateNote">
+    <div class="comment"><textarea maxlength="1000" name="Text">@Model.Text</textarea></div>
+    <p align="center"><button class="new" name="Name" type="submit">Save note</button></p>
 </form>
 </body>

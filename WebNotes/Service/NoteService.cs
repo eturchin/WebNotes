@@ -28,9 +28,7 @@ namespace WebNotes.Service
         }
         public Note AddTextToNote(Note note)
         {
-            var addedNote = _dbContext.Notes.Add(note);
-            _dbContext.SaveChanges();
-            return addedNote.Entity;
+            throw new NotImplementedException();
         }
 
         public async Task<Note> UpdateNote(Note note)

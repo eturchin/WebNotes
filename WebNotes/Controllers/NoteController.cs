@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebNotes.Entity;
 using WebNotes.Service;
@@ -37,10 +38,12 @@ namespace WebNotes.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateNote(Note note)
+        public async Task<IActionResult> UpdateNote(Note note)
         {
-            var addedNote = _noteService.UpdateNote(note);
-            return View("Index");
+            var updatedNote = _noteService.GetNote(note.Id);
+            updatedNote.Text = note.Text;
+            await _noteService.UpdateNote(updatedNote);
+            return RedirectToAction("Index");
         }
     }
 }

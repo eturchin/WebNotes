@@ -16,15 +16,19 @@
         <button type="submit">Add note</button>
     </div>
 </form>
-<section class="text">
+<section>
         @{
             if (Model != null)
             {
+                var i = 1;
                 foreach (var note in Model)
                 {
-                    <a asp-route-id="@note.Id" asp-controller="Note" asp-action="GetNote">@note.Name</a>
+                    var i1 = i;
+                    <a class="nav-link text-dark" asp-route-id="@note.Id" asp-controller="Note" asp-action="GetNote">@i1) @note.Name</a>
+                    <p></p>
+                    i++;
                 }
             }
         }
-    </section>
+</section>
 </body>
