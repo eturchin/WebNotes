@@ -16,7 +16,7 @@
             <button type="submit">Add note</button>
         </div>
     </form>
-    <section>
+    <ul>
         @{
             if (Model != null)
             {
@@ -24,12 +24,11 @@
                 foreach (var note in Model)
                 {
                     var i1 = i;
-                    <a class="nav-link text-dark" asp-route-id="@note.Id" asp-controller="Note" asp-action="GetNote">@i1) @note.Name</a>
-                    <p></p>
+                    <a method = "get" class="nav-link text-dark" asp-route-id="@note.Id" asp-controller="Note" asp-action="GetNote">@i1) @note.Name</a>
                     i++;
                 }
             }
         }
-    </section>
+    </ul>
 </div>
 </body>
